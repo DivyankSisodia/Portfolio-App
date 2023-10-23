@@ -68,9 +68,23 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
+      drawer: const Drawer(
+        width: 250,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(FontAwesomeIcons.unsplash),
+                Text('About me'),
+              ],
+            )
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        title: const Text('Simple Example'),
+        // title: const Text('Simple Example'),
       ),
       body: SlidingSheet(
         elevation: 8,
@@ -91,7 +105,46 @@ class _MainScreenState extends State<MainScreen> {
           child: Stack(
             children: [
               Container(
-                child: Image.asset('name')
+                // margin: const EdgeInsets.all(35),
+                child: ShaderMask(shaderCallback: (Rect){
+                  return const LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.black, Colors.transparent],
+                    ).createShader(Rect);
+                  },
+                  blendMode: BlendMode.dstIn,
+                  child: Image.asset(
+                    'assets/my_image.jpeg',
+                    height: 450,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              Container(
+                alignment: Alignment.center,
+                margin: EdgeInsets.only(
+                    top: MediaQuery.of(context).size.height * 0.49),
+                child:const Column(
+                  children: [
+                    Text(
+                      'Divyank Sisodia',
+                      style: TextStyle(
+                        fontSize: 40,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white
+                      ),
+                    ),
+                    Text(
+                      'Software Developer',
+                      style: TextStyle(
+                        fontSize: 25,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.white
+                      ),
+                    ),
+                  ],
+                ),
               )
             ],
           ),

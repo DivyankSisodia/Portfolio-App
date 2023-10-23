@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myinsight/about_me.dart';
 import 'package:myinsight/main_screen.dart';
 
 void main() {
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainScreen(),
+      home: const AboutScreen(),
     );
   }
 }
