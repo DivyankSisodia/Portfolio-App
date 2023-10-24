@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:myinsight/Achievement.dart';
 import 'package:myinsight/about_me.dart';
+import 'package:myinsight/my_project.dart';
 import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:line_icons/line_icons.dart';
@@ -92,14 +94,35 @@ class _MainScreenState extends State<MainScreen> {
               ),
             ),
             PopupMenuItem(
-                value: 2,
-                child: TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'My Project',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                )),
+              value: 2,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const ProjectScreen()));
+                },
+                child: const Text(
+                  'My Project',
+                  style: TextStyle(color: Colors.white),
+                ),
+              )
+            ),
+            PopupMenuItem(
+              value: 3,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const AchievementScreen()));
+                },
+                child: const Text(
+                  'Achievements',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
           ],
         ),
         // title: const Text('Simple Example'),
