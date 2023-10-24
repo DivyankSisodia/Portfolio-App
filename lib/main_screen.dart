@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:myinsight/about_me.dart';
 import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:line_icons/line_icons.dart';
@@ -11,7 +12,8 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  MyMarks(num, type) {
+  // ignore: avoid_types_as_parameter_names
+  myMarks(num, type) {
     return Row(
       children: [
         Text(
@@ -31,35 +33,34 @@ class _MainScreenState extends State<MainScreen> {
       height: 100,
       width: 100,
       child: Card(
-        margin: const EdgeInsets.all(0),
-        color: const Color.fromARGB(255, 0, 0, 0),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(10),
-        ),
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                icon,
-                size: 27,
-                color: Colors.white,
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Text(
-                tech,
-                style: const TextStyle(
-                  fontSize: 18,
-                  // fontWeight: FontWeight.bold,
+          margin: const EdgeInsets.all(0),
+          color: const Color.fromARGB(255, 0, 0, 0),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  icon,
+                  size: 27,
                   color: Colors.white,
                 ),
-              ),
-            ],
-          ),
-        )
-      ),
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  tech,
+                  style: const TextStyle(
+                    fontSize: 18,
+                    // fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                  ),
+                ),
+              ],
+            ),
+          )),
     );
   }
 
@@ -68,22 +69,39 @@ class _MainScreenState extends State<MainScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       backgroundColor: const Color.fromARGB(255, 0, 0, 0),
-      drawer: const Drawer(
-        width: 250,
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(FontAwesomeIcons.unsplash),
-                Text('About me'),
-              ],
-            )
-          ],
-        ),
-      ),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
+        leading: PopupMenuButton(
+          color: Colors.black,
+          icon: const Icon(
+            Icons.menu,
+            color: Colors.black,
+          ),
+          itemBuilder: (context) => [
+            PopupMenuItem(
+              value: 1,
+              child: TextButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => AboutScreen()));
+                },
+                child: const Text(
+                  'About Me',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            ),
+            PopupMenuItem(
+                value: 2,
+                child: TextButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'My Project',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                )),
+          ],
+        ),
         // title: const Text('Simple Example'),
       ),
       body: SlidingSheet(
@@ -106,11 +124,12 @@ class _MainScreenState extends State<MainScreen> {
             children: [
               Container(
                 // margin: const EdgeInsets.all(35),
-                child: ShaderMask(shaderCallback: (Rect){
-                  return const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Colors.black, Colors.transparent],
+                child: ShaderMask(
+                  shaderCallback: (Rect) {
+                    return const LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [Colors.black, Colors.transparent],
                     ).createShader(Rect);
                   },
                   blendMode: BlendMode.dstIn,
@@ -125,23 +144,21 @@ class _MainScreenState extends State<MainScreen> {
                 alignment: Alignment.center,
                 margin: EdgeInsets.only(
                     top: MediaQuery.of(context).size.height * 0.49),
-                child:const Column(
+                child: const Column(
                   children: [
                     Text(
                       'Divyank Sisodia',
                       style: TextStyle(
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                      ),
+                          fontSize: 40,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                     Text(
                       'Software Developer',
                       style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white
-                      ),
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white),
                     ),
                   ],
                 ),
@@ -174,9 +191,9 @@ class _MainScreenState extends State<MainScreen> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        MyMarks('84%', '10th'),
-                        MyMarks('91%', '12th'),
-                        MyMarks('89%', ' B.Tech'),
+                        myMarks('84%', '10th'),
+                        myMarks('91%', '12th'),
+                        myMarks('89%', ' B.Tech'),
                       ],
                     ),
                     const SizedBox(
@@ -233,8 +250,7 @@ class _MainScreenState extends State<MainScreen> {
                     )
                   ],
                 ),
-              )
-            );
+              ));
         },
       ),
     );

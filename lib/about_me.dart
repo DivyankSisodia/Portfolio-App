@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:myinsight/main_screen.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AboutScreen extends StatefulWidget {
-  const AboutScreen({super.key});
-
   @override
   State<AboutScreen> createState() => _AboutScreenState();
 }
@@ -32,6 +31,13 @@ class _AboutScreenState extends State<AboutScreen> {
                   height: 450,
                   fit: BoxFit.cover,
                 ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 36.0, left: 10),
+              child: IconButton(
+                onPressed: ()=> Navigator.push(context, MaterialPageRoute(builder: (context)=> const MainScreen() )),
+                icon: const Icon(FontAwesomeIcons.arrowRightArrowLeft),
               ),
             ),
             Container(
@@ -74,7 +80,7 @@ class _AboutScreenState extends State<AboutScreen> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => MainScreen()));
+                                builder: (context) => const MainScreen()));
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: Colors.deepPurple,
@@ -100,41 +106,77 @@ class _AboutScreenState extends State<AboutScreen> {
                     ),
                   ),
                   Container(
-                      padding: EdgeInsets.all(10),
+                      padding: const EdgeInsets.all(10),
                       child: const Text(
                         'I am a passionate Computer Science engineer, wanted to work in environment where i can improve my personality, skills and gain knowledge by working with a team of experts and also contribute to the growth of the organization.',
-                        style: TextStyle(color: Colors.amberAccent),
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 217, 245, 160)),
                       )),
                   const SizedBox(
                     height: 25,
                   ),
-                  const Row(
+                  Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      Icon(
-                        FontAwesomeIcons.github,
-                        color: Colors.white,
-                        size: 40,
+                      IconButton(
+                        onPressed: () {
+                          const link = 'https://github.com/DivyankSisodia';
+                          launchUrl(Uri.parse(link),
+                              mode: LaunchMode.inAppWebView);
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.github,
+                          color: Colors.white,
+                          size: 40,
+                        ),
                       ),
-                      Icon(
-                        FontAwesomeIcons.linkedin,
-                        color: Colors.white,
-                        size: 40,
+                      IconButton(
+                        onPressed: () {
+                          const link = 'https://www.linkedin.com/in/divyank-sisodia-b07576230/';
+                          launchUrl(Uri.parse(link),
+                              mode: LaunchMode.inAppWebView);
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.linkedin,
+                          color: Colors.white,
+                          size: 40,
+                        ),
                       ),
-                      Icon(
-                        FontAwesomeIcons.instagram,
-                        color: Colors.white,
-                        size: 40,
+                      IconButton(
+                        onPressed: () {
+                          const link = 'https://www.instagram.com/sisodiadivyank/';
+                          launchUrl(Uri.parse(link),
+                              mode: LaunchMode.inAppWebView);
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.instagram,
+                          color: Colors.white,
+                          size: 40,
+                        ),
                       ),
-                      Icon(
-                        FontAwesomeIcons.stackOverflow,
-                        color: Colors.white,
-                        size: 40,
+                      IconButton(
+                        onPressed: () {
+                          const link = 'https://www.hackerrank.com/dashboard';
+                          launchUrl(Uri.parse(link),
+                              mode: LaunchMode.inAppWebView);
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.stackOverflow,
+                          color: Colors.white,
+                          size: 40,
+                        ),
                       ),
-                      Icon(
-                        FontAwesomeIcons.hackerrank,
-                        color: Colors.white,
-                        size: 40,
+                      IconButton(
+                        onPressed: () {
+                          const link = 'https://www.hackerrank.com/dashboard';
+                          launchUrl(Uri.parse(link),
+                              mode: LaunchMode.inAppWebView);
+                        },
+                        icon: const Icon(
+                          FontAwesomeIcons.hackerrank,
+                          color: Colors.white,
+                          size: 40,
+                        ),
                       ),
                     ],
                   )

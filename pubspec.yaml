@@ -39,6 +39,7 @@ dependencies:
   sliding_sheet: ^0.5.2
   font_awesome_flutter: ^10.6.0
   line_icons: ^2.0.3
+  url_launcher: ^6.1.14
 
 dev_dependencies:
   flutter_test:
